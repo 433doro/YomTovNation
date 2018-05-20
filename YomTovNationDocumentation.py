@@ -6,7 +6,8 @@ if __name__ == '__main__':
     # You must use a connection access key to make requests to Googlesheets
     cognigo_employees_lunch_requests = google_sheets_api.retrive_data_from_YomTovNation(
         connection_authorization_key)
-    empl = cognigo_employees_lunch_requests[0]
-    employee_name, main_dish, add_on= empl[0], empl[1], empl[2]
+    specific_employee_request_details = cognigo_employees_lunch_requests[0]
+    employee_name, main_dish, add_on = specific_employee_request_details[0], \
+                                       specific_employee_request_details[1], specific_employee_request_details[2]
 
 sqlite3_database_manager().transaction_controller(employee_name, main_dish, add_on)
