@@ -1,5 +1,6 @@
 import sqlite3
 
+
 class sqlite3_database_manager:
 
     def __init__(self):

@@ -27,7 +27,7 @@ def retrive_data_from_YomTovNation(connection_access: object) -> object:
     :return Returns a tuple that contains the name of the employee, his main dish For the current day, and his side-dish
     """
     SPREADSHEET_ID = '146RH3SMLhNFF55_n_EXEIQ9UqlFcsBErnEYr9Bmpg7w'
-    RANGE_NAME = 'Yom Tov Menu!B4:D5'
+    RANGE_NAME = 'Yom Tov Menu!B4:D18'
     result = connection_access.spreadsheets().values().get(spreadsheetId=SPREADSHEET_ID,
                                                            range=RANGE_NAME).execute()
     values = result.get('values', [])
