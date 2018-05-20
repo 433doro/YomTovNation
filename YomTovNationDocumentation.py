@@ -1,5 +1,3 @@
-from time import sleep
-
 import google_sheets_api
 from DB_connection_manager import sqlite3_database_manager
 
@@ -20,19 +18,15 @@ def employee_data_validation(employee_data):
     else:
         return employee_data
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     connection_authorization_key = google_sheets_api.authorize_access()  # type: object
     # You must use a connection access key to make requests to Googlesheets
     cognigo_employees_lunch_requests = google_sheets_api.retrive_data_from_YomTovNation(connection_authorization_key)
 
     specific_employee_request_details = cognigo_employees_lunch_requests[0]  # type: object
 
-for  employee in cognigo_employees_lunch_requests:
-    print(employee)
+for employee in cognigo_employees_lunch_requests:
     employee = employee_data_validation(employee)
-    print(employee)
     employee_name, main_dish, add_on = employee[0], employee[1], employee[2]
     sqlite3_database_manager().transaction_controller(employee_name, main_dish, add_on)
-
-
