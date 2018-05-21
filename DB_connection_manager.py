@@ -24,7 +24,7 @@ class sqlite3_database_manager:
         :param main_dish: The main dish as specified in YomTovNation file in google spreadsheet
         :param add_on: The Add-on as specified in YomTovNation file in google spreadsheet
         """
-        self.db_transaction_controller.execute("INSERT into '{}' "
-                                               "values ('{}', '{}', CURRENT_DATE)"
+        self.db_transaction_controller.execute("INSERT into 'InvitationRecord' "
+                                               "values ('{}', '{}', '{}', CURRENT_DATE)"
                                                .format(employee_name, main_dish, add_on))
         self.db_connection_setup.commit()
