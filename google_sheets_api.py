@@ -2,6 +2,8 @@ from __future__ import print_function
 from apiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
+import logging
+
 
 
 def authorize_access():
@@ -32,6 +34,7 @@ def retrive_data_from_YomTovNation(connection_access: object) -> object:
                                                            range=RANGE_NAME).execute()
     values = result.get('values', [])
     if not values:
-        print('No data found.')
+        logging.error('No data found.')
     else:
+        logging.info("found data!")
         return values

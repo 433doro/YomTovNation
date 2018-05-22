@@ -1,6 +1,6 @@
 import google_sheets_api
 from DB_connection_manager import sqlite3_database_manager
-
+from db_connection_manager_postgres import yomtovnation_postgressql_db_manager
 
 def employee_data_validation(employee_data):
     """
@@ -27,6 +27,6 @@ if __name__ == '__main__':
     specific_employee_request_details = cognigo_employees_lunch_requests[0]  # type: object
 
 for employee in cognigo_employees_lunch_requests:
-    employee = employee_data_validation(employee)
+    employee_data_validation(employee)
     employee_name, main_dish, add_on = employee[0], employee[1], employee[2]
-    sqlite3_database_manager().transaction_controller(employee_name, main_dish, add_on)
+    yomtovnation_postgressql_db_manager().insert_data_into_yomtovnationdb(employee_name, main_dish, add_on)

@@ -1,11 +1,19 @@
 import sqlite3
+import logging
 
 
 class sqlite3_database_manager:
 
     def __init__(self):
-        self.db_connection_setup = sqlite3.connect('YomTovInvitationRecord.db')
-        self.db_transaction_controller = self.db_connection_setup.cursor()
+        try:
+
+            self.db_connection_setup = sqlite3.connect('YomTovInvitationRecord.db')
+            self.db_transaction_controller = self.db_connection_setup.cursor()
+            logging.info("Successfuly connected to the postgresDB")
+
+        except:
+
+            logging.exception("Couldn't connect to the postgresDB")
 
     def connection_setup(self):
         """
@@ -25,6 +33,6 @@ class sqlite3_database_manager:
         :param add_on: The Add-on as specified in YomTovNation file in google spreadsheet
         """
         self.db_transaction_controller.execute("INSERT into 'InvitationRecord' "
-                                               "values ('{}', '{}', '{}', CURRENT_DATE)"
+                                               "values ('{}', '{}', '{}', STRFTIME('%d-%m-%Y'))"
                                                .format(employee_name, main_dish, add_on))
         self.db_connection_setup.commit()
