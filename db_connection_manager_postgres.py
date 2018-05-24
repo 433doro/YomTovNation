@@ -8,7 +8,7 @@ class yomtovnation_postgressql_db_manager:
                                               password='mysecretpassword')
         self.connection_manager = connection_manager
 
-    def insert_data_into_yomtovnationdb(self, employee_name, main_dish, add_on):
+    def insert_data_into_yomtovnation_db(self, employee_name, main_dish, add_on):
         self.connection_manager.cursor().execute("INSERT into InvitationRecord "
-                                   "values ('{}', '{}', '{}', CURRENT_DATE)".format(employee_name, main_dish, add_on))
+                                                 "values ('{}', '{}', '{}', CURRENT_DATE)".format(employee_name, main_dish, add_on))
         self.connection_manager.commit()

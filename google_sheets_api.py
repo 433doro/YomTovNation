@@ -10,6 +10,7 @@ def authorize_access():
     """
     Authorizes the access to google spreadsheets API, if the connection has been authorized the function returns
     the service as an HTTP object
+    :rtype: object
     :return returns an google spreadsheet connection object
     """
     SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'

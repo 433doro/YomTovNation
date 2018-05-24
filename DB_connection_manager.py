@@ -12,16 +12,7 @@ class sqlite3_database_manager:
             logging.info("Successfuly connected to the postgresDB")
 
         except:
-
             logging.exception("Couldn't connect to the postgresDB")
-
-    def connection_setup(self):
-        """
-        Sets-up the connection to the DataBase, if the connection has been successfully established will initialize the
-        self object with an open connection attribute
-        """
-
-        return self
 
     def transaction_controller(self, employee_name, main_dish, add_on):
         """
