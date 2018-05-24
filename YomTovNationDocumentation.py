@@ -55,9 +55,10 @@ if __name__ == '__main__':
                     for employee in cognigo_employees_lunch_requests:
                         employee_data_validation(employee)
                         employee_name, main_dish, add_on = employee[0], employee[1], employee[2]
-                        yomtovnation_postgressql_db_manager().insert_data_into_yomtovnation_db(employee_name, main_dish, add_on)
+                        yomtovnation_postgressql_db_manager().insert_data_into_yomtovnation_db(employee_name, main_dish,
+                                                                                               add_on)
             except:
                 raise
-    except :
+    except:
         logging.exception("Some error occurred")
         raise
